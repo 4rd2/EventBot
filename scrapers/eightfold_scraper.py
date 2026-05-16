@@ -23,6 +23,18 @@ MONTH_MAP = {
     "sep": "09", "oct": "10", "nov": "11", "dec": "12",
 }
 
+def infer_tags(title: str) -> list[str]:
+    t = title.lower()
+    if any(k in t for k in ("job fair", "career fair", "hiring fair", "job expo")):
+        return ["career-fair"]
+    if any(k in t for k in ("workshop", "case interview", "coding assessment", "doing the math", "ace the")):
+        return ["workshop"]
+    if any(k in t for k in ("hackathon", "hack")):
+        return ["hackathon"]
+    if any(k in t for k in ("networking", "mixer", "meetup")):
+        return ["networking"]
+    return ["info-session"]
+
 def parse_eightfold_date(dd: str, mmm: str, full_text: str) -> str:
     year_match = re.search(r"\b(202\d)\b", full_text)
     year = year_match.group(1) if year_match else str(datetime.now().year)
@@ -118,7 +130,7 @@ async def scrape_cards(page, domain: str) -> list[dict]:
                 "date":     date_str,
                 "location": location or "Virtual",
                 "link":     href or page.url,
-                "tags":     ["info-session"],
+                "tags":     infer_tags(title),
                 "source":   "eightfold",
             })
         except Exception as e:

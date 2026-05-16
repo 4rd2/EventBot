@@ -1,0 +1,17 @@
+# Environment — contains Discord webhook URL, never commit
+scrapers/.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Playwright browser binaries
+ms-playwright/
+
+# OS
+.DS_Store
+Thumbs.db

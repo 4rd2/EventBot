@@ -1,0 +1,5 @@
+# Eightfold.ai event pages (used by eightfold_scraper.py)
+# Add more companies here as their Eightfold pages are verified working
+eightfold_pages:
+  - company: Capital One
+    url: https://capitalone.eightfold.ai/events/open?domain=capitalone.com

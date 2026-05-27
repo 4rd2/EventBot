@@ -77,6 +77,13 @@
   tags:
   - workshop
 - company: Capital One
+  event: Cyber Security Info Session
+  date: '2026-06-10'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=2zDDr3pz&domain=capitalone.com
+  tags:
+  - info-session
+- company: Capital One
   event: 'Students & Grads Virtual Event: Doing the Math | Math Concepts in the Business
     Case Interview'
   date: '2026-06-12'
@@ -98,6 +105,13 @@
   link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=YWyeNvlW&domain=capitalone.com
   tags:
   - career-fair
+- company: Capital One
+  event: Cyber Security Info Session
+  date: '2026-07-07'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=YWyeZqOW&domain=capitalone.com
+  tags:
+  - info-session
 - company: Capital One
   event: Data Science Internship Program Info Session & Former Intern Panel
   date: '2026-07-15'
@@ -126,6 +140,20 @@
   link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=VP0wk00z&domain=capitalone.com
   tags:
   - workshop
+- company: Capital One
+  event: 'Capital One Strategy: Chat with an Associate!'
+  date: '2026-08-04'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=mW63jpR7&domain=capitalone.com
+  tags:
+  - info-session
+- company: Capital One
+  event: 'Capital One Strategy: Chat with an Associate!'
+  date: '2026-08-05'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=LWmlrkJP&domain=capitalone.com
+  tags:
+  - info-session
 - company: Capital One
   event: G.I. Jobs Military Friendly Virtual Job Fair-8.27.26
   date: '2026-08-27'

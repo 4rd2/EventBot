@@ -55,11 +55,25 @@
   tags:
   - info-session
 - company: Capital One
+  event: 'Students & Grads Virtual Event: Product Case Workshop'
+  date: '2026-06-01'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=GzG2jjR7&domain=capitalone.com
+  tags:
+  - workshop
+- company: Capital One
   event: 'Students & Grads Virtual Event: Finance Programs Information Session & Recruiter
     Q&A'
   date: '2026-06-02'
   location: Online
   link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=E75NZyQz&domain=capitalone.com
+  tags:
+  - info-session
+- company: Capital One
+  event: 'Capital One Strategy: Chat with an Associate!'
+  date: '2026-06-03'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=G7NZ2Kd7&domain=capitalone.com
   tags:
   - info-session
 - company: Capital One
@@ -69,6 +83,13 @@
   link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=1WAx9K2P&domain=capitalone.com
   tags:
   - workshop
+- company: Capital One
+  event: 'Capital One Strategy: Chat with an Associate!'
+  date: '2026-06-04'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=Mz80d2ez&domain=capitalone.com
+  tags:
+  - info-session
 - company: Capital One
   event: 'Students & Grads Virtual Event: Tech Case Workshop'
   date: '2026-06-10'
@@ -120,6 +141,13 @@
   tags:
   - info-session
 - company: Capital One
+  event: 'Students & Grads Virtual Event: Product Case Workshop'
+  date: '2026-07-15'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=jzKJ1KO7&domain=capitalone.com
+  tags:
+  - workshop
+- company: Capital One
   event: Applied Research Internship Program Info Session &Former Intern Panel!
   date: '2026-07-23'
   location: Online
@@ -168,3 +196,11 @@
   link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=ozgaj2rW&domain=capitalone.com
   tags:
   - career-fair
+- company: Capital One
+  event: 'Students & Grads Virtual Event: Learn About Capital One''s 2027 Product
+    Program & Recruiter Q&A'
+  date: '2027-06-17'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=Rzrl9ayW&domain=capitalone.com
+  tags:
+  - info-session

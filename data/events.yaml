@@ -120,6 +120,14 @@
   tags:
   - workshop
 - company: Capital One
+  event: Databricks 2026
+  date: '2026-06-15'
+  location: Moscone Center-North, West and South, 747 Howard Street, San Francisco,
+    CA 94103
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=LzdnQMLW&domain=capitalone.com
+  tags:
+  - info-session
+- company: Capital One
   event: 'Students & Grads Virtual Event: Ace that Coding Assessment Workshop'
   date: '2026-06-16'
   location: Online
@@ -134,12 +142,33 @@
   tags:
   - info-session
 - company: Capital One
+  event: Capital One | Hiring Our Heroes Virtual Alumni Panel 2026'3
+  date: '2026-06-24'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=mW63OaL7&domain=capitalone.com
+  tags:
+  - info-session
+- company: Capital One
   event: G.I. Jobs Military Friendly Virtual Job Fair-June 25, 2026
   date: '2026-06-25'
   location: Online
   link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=YWyeNvlW&domain=capitalone.com
   tags:
   - career-fair
+- company: Capital One
+  event: ACL Conference 2026
+  date: '2026-07-02'
+  location: Grand Hyatt Manchester San Diego, San Diego, CA, USA
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=6zZo8LYP&domain=capitalone.com
+  tags:
+  - info-session
+- company: Capital One
+  event: ICML Conference2026
+  date: '2026-07-06'
+  location: COEX Convention & Exhibition Center, Seoul, South Korea
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=LPXD5bMP&domain=capitalone.com
+  tags:
+  - info-session
 - company: Capital One
   event: Cyber Security Info Session
   date: '2026-07-07'
@@ -259,5 +288,13 @@
   date: '2027-06-17'
   location: Online
   link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=Rzrl9ayW&domain=capitalone.com
+  tags:
+  - info-session
+- company: Capital One
+  event: 'Students & Grads Virtual Event: Learn About Capital One''s 2027 Programs
+    & Recruiter Q&A'
+  date: '2027-06-18'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=o7jNXGj7&domain=capitalone.com
   tags:
   - info-session

@@ -156,6 +156,13 @@
   tags:
   - career-fair
 - company: Capital One
+  event: 'Students & Grads Virtual Event: Business Case Workshop'
+  date: '2026-06-25'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=o7jNE3B7&domain=capitalone.com
+  tags:
+  - workshop
+- company: Capital One
   event: ACL Conference 2026
   date: '2026-07-02'
   location: Grand Hyatt Manchester San Diego, San Diego, CA, USA
@@ -255,6 +262,13 @@
   tags:
   - workshop
 - company: Capital One
+  event: GopherCon Conference2026
+  date: '2026-08-03'
+  location: Seattle Convention Center , Seattle, Washington, USA
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=JPolAgqW&domain=capitalone.com
+  tags:
+  - info-session
+- company: Capital One
   event: 'Capital One Strategy: Chat with an Associate!'
   date: '2026-08-04'
   location: Online
@@ -276,12 +290,33 @@
   tags:
   - career-fair
 - company: Capital One
+  event: All Things Open Conference 2026
+  date: '2026-10-18'
+  location: Convention Center, Raleigh, North carolina
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=w7qlvqbW&domain=capitalone.com
+  tags:
+  - info-session
+- company: Capital One
   event: G.I. Jobs Military Friendly Virtual Job Fair-10.22.26
   date: '2026-10-22'
   location: Online
   link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=ozgaj2rW&domain=capitalone.com
   tags:
   - career-fair
+- company: Capital One
+  event: EMNLP Conference 2026
+  date: '2026-10-22'
+  location: Convention Center, Budapest, Hungary
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=o7jN8gb7&domain=capitalone.com
+  tags:
+  - info-session
+- company: Capital One
+  event: Open Source in Finance Forum (OSFF) 2026
+  date: '2026-11-04'
+  location: Brookfield Place, New York, NY, USA
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=LPXDZkeP&domain=capitalone.com
+  tags:
+  - info-session
 - company: Capital One
   event: 'Students & Grads Virtual Event: Learn About Capital One''s 2027 Product
     Program & Recruiter Q&A'
@@ -296,5 +331,13 @@
   date: '2027-06-18'
   location: Online
   link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=o7jNXGj7&domain=capitalone.com
+  tags:
+  - info-session
+- company: Capital One
+  event: 'Students & Grads Virtual Event: Learn About Capital One''s 2027 Tech Programs
+    & Recruiter Q&A'
+  date: '2027-06-24'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=ozgMXNjW&domain=capitalone.com
   tags:
   - info-session

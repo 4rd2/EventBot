@@ -149,6 +149,14 @@
   tags:
   - info-session
 - company: Capital One
+  event: 'Students & Grads Virtual Event: Management Rotation Program Info Session
+    and Q&A'
+  date: '2026-06-24'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=G7NZO5q7&domain=capitalone.com
+  tags:
+  - info-session
+- company: Capital One
   event: G.I. Jobs Military Friendly Virtual Job Fair-June 25, 2026
   date: '2026-06-25'
   location: Online
@@ -308,6 +316,13 @@
   date: '2026-10-22'
   location: Convention Center, Budapest, Hungary
   link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=o7jN8gb7&domain=capitalone.com
+  tags:
+  - info-session
+- company: Capital One
+  event: Afrotech Conference 2026
+  date: '2026-11-02'
+  location: George Brown Convention Center, Houston, Texas
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=LPXDYXbP&domain=capitalone.com
   tags:
   - info-session
 - company: Capital One

@@ -200,6 +200,13 @@
   tags:
   - workshop
 - company: Capital One
+  event: 'Students & Grads Virtual Event: Ace That Coding Assessment Workshop'
+  date: '2026-07-14'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=Z7kovdn7&domain=capitalone.com
+  tags:
+  - workshop
+- company: Capital One
   event: Data Science Internship Program Info Session & Former Intern Panel
   date: '2026-07-15'
   location: Online
@@ -375,5 +382,13 @@
   date: '2027-06-24'
   location: Online
   link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=ozgMXNjW&domain=capitalone.com
+  tags:
+  - info-session
+- company: Capital One
+  event: 'Students & Grads Virtual Event: Learn About Capital One''s 2027 Tech Programs
+    & Recruiter Q&A'
+  date: '2027-07-08'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=ozgMdKjW&domain=capitalone.com
   tags:
   - info-session

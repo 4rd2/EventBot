@@ -208,6 +208,13 @@
   tags:
   - workshop
 - company: Capital One
+  event: 'Students & Grads Virtual Event: Business Case Workshop'
+  date: '2026-07-10'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=GWp1maQ7&domain=capitalone.com
+  tags:
+  - workshop
+- company: Capital One
   event: 'Students & Grads Virtual Event: Ace That Coding Assessment Workshop'
   date: '2026-07-14'
   location: Online
@@ -226,6 +233,14 @@
   date: '2026-07-15'
   location: Online
   link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=jzKJ1KO7&domain=capitalone.com
+  tags:
+  - workshop
+- company: Capital One
+  event: 'Students & Grads Virtual Event: Doing the Math | Math Concepts in the Business
+    Case Interview'
+  date: '2026-07-16'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=2zQJRgpP&domain=capitalone.com
   tags:
   - workshop
 - company: Capital One
@@ -312,6 +327,29 @@
   link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=LWmlrkJP&domain=capitalone.com
   tags:
   - info-session
+- company: Capital One
+  event: 'Students & Grads Virtual Event: Doing the Math | Math Concepts in the Business
+    Case Interview'
+  date: '2026-08-06'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=0PvdOK67&domain=capitalone.com
+  tags:
+  - workshop
+- company: Capital One
+  event: 'Students & Grads Virtual Event: Business Case Workshop'
+  date: '2026-08-11'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=2PB0OAr7&domain=capitalone.com
+  tags:
+  - workshop
+- company: Capital One
+  event: 'Students & Grads Virtual Event: Doing the Math | Math Concepts in the Business
+    Case Interview'
+  date: '2026-08-18'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=Qz9OBV1W&domain=capitalone.com
+  tags:
+  - workshop
 - company: Capital One
   event: G.I. Jobs Military Friendly Virtual Job Fair-8.27.26
   date: '2026-08-27'
@@ -421,5 +459,13 @@
   date: '2027-07-13'
   location: Online
   link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=w7q1r5B7&domain=capitalone.com
+  tags:
+  - info-session
+- company: Capital One
+  event: 'Students & Grads Virtual Event: Learn About Capital One''s 2027 Tech Programs
+    & Recruiter Q&A'
+  date: '2027-07-20'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=GPn1mOmz&domain=capitalone.com
   tags:
   - info-session

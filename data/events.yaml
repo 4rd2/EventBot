@@ -364,11 +364,25 @@
   tags:
   - workshop
 - company: Capital One
+  event: 'Students & Grads Virtual Event: Business Case Workshop - Replay'
+  date: '2026-08-17'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=GPn14aDz&domain=capitalone.com
+  tags:
+  - workshop
+- company: Capital One
   event: 'Students & Grads Virtual Event: Doing the Math | Math Concepts in the Business
     Case Interview'
   date: '2026-08-18'
   location: Online
   link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=Qz9OBV1W&domain=capitalone.com
+  tags:
+  - workshop
+- company: Capital One
+  event: 'Students & Grads Virtual Event: Business Case Workshop - Replay'
+  date: '2026-08-24'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=Lzd1YeAP&domain=capitalone.com
   tags:
   - workshop
 - company: Capital One

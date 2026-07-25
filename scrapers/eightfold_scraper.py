@@ -205,6 +205,16 @@ async def main():
     added = len(combined) - len(existing)
     save_pending(combined)
 
+    # Stage B dual-write: mirror scraped events into Supabase as pending.
+    # No-op until SUPABASE_* credentials are configured; YAML stays authoritative.
+    try:
+        import db
+        if db.is_configured():
+            n = db.upsert_events(new_events, status="pending")
+            print(f"Supabase: upserted {n} pending event(s)")
+    except Exception as e:
+        print(f"[!] Supabase upsert failed (YAML unaffected): {e}")
+
     print(f"\nDone. {added} new event(s) written to data/events_pending.yaml")
     print("Review it, then run:  python scrapers/merge_events.py")
 

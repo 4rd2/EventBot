@@ -36,3 +36,4 @@ if not POST_ONLY:
         sys.exit(0)
 
 run("Discord notifier", HERE / "discord_notifier.py")
+run("Phone notifier", HERE / "phone_notifier.py")

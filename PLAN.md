@@ -197,41 +197,63 @@ A read-only public site rendering `events.yaml` — useful for sharing with othe
 - Hosting: GitHub Pages (free, auto-deploys on push to main)
 - Features: filter by tag, sort by date, "SOON" badge for events within 14 days
 
-### 4.2 Phone / SMS Notifications — Supabase Subscriber Store
+### 4.2 Supabase Backend — Events + Phone Subscribers
 
-Push event alerts to phones. Subscribers are stored in a **Supabase** (Postgres) table
-so people can sign up/unsubscribe without editing the repo. Supabase account
-credentials will be added later — everything below is designed so the pipeline
-runs fine (phone step silently skips) until the credentials exist.
+Move the data layer to **Supabase** (Postgres): events migrate out of the YAML files
+into an `events` table, and phone subscribers live in a `subscribers` table so people
+can sign up/unsubscribe without editing the repo. Supabase account credentials will be
+added later — everything below is designed so the pipeline runs fine (Supabase steps
+silently skip, YAML keeps working) until the credentials exist.
 
 #### Architecture
 
 ```
-                       ┌────────────────────────────┐
-                       │        Supabase            │
- signup form / manual  │  subscribers               │
- dashboard insert ───► │  notification_log          │
-                       └────────────┬───────────────┘
-                                    │ service-role key (read subs, write log)
- events.yaml ──► phone_notifier.py ─┴──► SMS provider (Twilio) ──► 📱
+                          ┌─────────────────────────────────┐
+ eightfold_scraper.py ──► │           Supabase              │
+      (upsert events)     │  events          subscribers ◄──│── signup form /
+                          │  notification_log               │   dashboard insert
+                          └───────┬─────────────────┬───────┘
+                                  │                 │ service-role key
+                                  ▼                 ▼
+                        discord_notifier.py   phone_notifier.py ──► Twilio SMS ──► 📱
 ```
 
-- **Supabase** = source of truth for *who* gets notified (phone number + preferences).
+- **Supabase** = source of truth for *what* events exist and *who* gets notified.
 - **SMS provider** = *how* the message is delivered. Supabase doesn't send SMS itself,
   so pick one: **Twilio** (real SMS, ~$0.01/msg, recommended), or **ntfy.sh**
   (free push app, no phone number needed) as a zero-cost fallback.
-- `notification_log` in Supabase replaces the `sent_events.yaml` pattern *per subscriber*,
-  so each person gets each event exactly once even across daily CI runs.
+- `notification_log` replaces the `sent_events.yaml` pattern *per subscriber*, so each
+  person gets each event exactly once even across daily CI runs. Discord posting state
+  becomes a `discord_posted_at` column on the event row itself.
 
 #### Database schema (run in Supabase SQL editor)
 
 ```sql
+create table events (
+  id                uuid primary key default gen_random_uuid(),
+  company           text not null,
+  event             text not null,               -- event title
+  category          text,                        -- primary type: info-session, career-fair, …
+  tags              text[] default '{}',         -- extra labels beyond category
+  starts_at         timestamptz not null,        -- event date-time (UTC)
+  has_time          boolean default false,       -- false = scraper only knew the date
+  location          text default 'Online',
+  link              text not null,               -- registration URL
+  source            text default 'eightfold',    -- which scraper found it
+  status            text default 'pending',      -- pending | approved | rejected
+  discord_posted_at timestamptz,                 -- null = not yet posted to Discord
+  created_at        timestamptz default now(),
+  updated_at        timestamptz default now(),
+  unique (company, event, starts_at)             -- dedup key, same as today's event_key
+);
+create index events_starts_at_idx on events (starts_at);
+
 create table subscribers (
   id           uuid primary key default gen_random_uuid(),
   phone_number text unique not null,          -- E.164 format: +16145551234
   name         text,
   companies    text[] default '{}',           -- empty = all companies
-  tags         text[] default '{}',           -- empty = all tags
+  categories   text[] default '{}',           -- empty = all categories
   active       boolean default true,          -- soft unsubscribe
   created_at   timestamptz default now()
 );
@@ -239,19 +261,50 @@ create table subscribers (
 create table notification_log (
   id            bigint generated always as identity primary key,
   subscriber_id uuid references subscribers(id) on delete cascade,
-  event_key     text not null,                -- "company|event|date" (same key as sent_events.yaml)
+  event_id      uuid references events(id) on delete cascade,
   sent_at       timestamptz default now(),
   status        text default 'sent',          -- sent | failed
-  unique (subscriber_id, event_key)
+  unique (subscriber_id, event_id)
 );
 
--- Lock both tables down; the pipeline uses the service-role key which bypasses RLS.
+-- RLS: pipeline uses the service-role key which bypasses RLS.
+alter table events enable row level security;
 alter table subscribers enable row level security;
 alter table notification_log enable row level security;
 
--- (Later, for a public signup form) allow anonymous INSERT only:
+-- Events are not sensitive — allow public read (feeds the Phase 4.1 website for free):
+create policy "public read events" on events for select to anon using (status = 'approved');
+
+-- (Later, for a public signup form) allow anonymous INSERT only — anon can never READ numbers:
 -- create policy "public signup" on subscribers for insert to anon with check (true);
 ```
+
+Schema notes:
+- `starts_at` is a real timestamp — current YAML only has a date, so migrated rows get
+  midnight ET with `has_time = false`; the scraper should start capturing event times
+  where Eightfold provides them and set `has_time = true`.
+- `category` (single) vs `tags` (many): existing YAML `tags` map as first tag → `category`,
+  full list → `tags`. Subscribers filter on `category`, which keeps preferences simple.
+- `status` replaces the `events_pending.yaml` / `events.yaml` split: scraper inserts as
+  `pending`, merge/approve flips to `approved`, notifiers only ever read `approved`.
+
+#### Migration plan (YAML → Supabase, in safe stages)
+
+1. **Stage A — backfill:** one-off `scrapers/migrate_to_supabase.py` reads
+   `data/events.yaml` + `data/sent_events.yaml`, upserts every event as `approved`,
+   and sets `discord_posted_at = now()` for events already in the sent log
+   (so nothing gets re-posted after cutover).
+2. **Stage B — dual write:** scraper/merge upsert into Supabase
+   (`on_conflict=company,event,starts_at`) *and* keep writing YAML. Run a few days,
+   confirm parity.
+3. **Stage C — cutover reads:** `discord_notifier.py` and `phone_notifier.py` read
+   `approved` future events from Supabase instead of YAML.
+4. **Stage D — retire YAML:** stop writing `events.yaml` / `sent_events.yaml` and drop the
+   commit step from the GitHub Actions workflow — the repo stops needing daily data commits.
+   (Optional: keep a nightly YAML export as a human-readable backup.)
+
+Until credentials exist, all Supabase code paths detect missing env vars and no-op,
+so Stages A–D only begin once the account info is added.
 
 #### New script: `scrapers/phone_notifier.py`
 
@@ -259,50 +312,78 @@ alter table notification_log enable row level security;
    `TWILIO_AUTH_TOKEN`, `TWILIO_FROM_NUMBER`.
 2. **If Supabase vars are missing → print "phone notifications not configured, skipping" and `exit 0`.**
    This lets the feature merge now and light up later when credentials are added.
-3. Fetch `subscribers` where `active = true`.
-4. Load future events from `data/events.yaml` (reuse `event_key()` / `is_future()` logic
-   from `discord_notifier.py` — extract shared helpers into `scrapers/common.py`).
-5. For each subscriber: filter events by their `companies`/`tags` prefs (empty = all),
+3. Fetch `subscribers` where `active = true`, and `approved` events with `starts_at >= now()`.
+4. For each subscriber: filter events by their `companies`/`categories` prefs (empty = all),
    drop events already in `notification_log` for that subscriber.
-6. Send one concise SMS per subscriber batching their new events
+5. Send one concise SMS per subscriber batching their new events
    (SMS is per-message billing — batch, don't send one text per event):
    `"CareerEventBot: 3 new events — Capital One Strategy Workshop (Jun 1), … Reply STOP to opt out."`
-7. Insert a `notification_log` row per (subscriber, event) with `sent`/`failed` status;
+6. Insert a `notification_log` row per (subscriber, event) with `sent`/`failed` status;
    write log rows immediately after each send so a crash doesn't cause double-texts.
 
-#### Subscriber signup paths (in order of effort)
+#### Subscriber signup — API endpoint
 
-1. **MVP:** insert rows by hand in the Supabase dashboard (Table editor).
-2. **Later:** public signup form on the Phase 4.1 GitHub Pages site using the Supabase
-   anon key + insert-only RLS policy (anon can never *read* phone numbers).
-3. **Optional:** Discord `/subscribe` command or Twilio inbound "JOIN" keyword.
+How people sign up (web form, Discord command, etc.) is not decided yet, so the repo
+ships a single **API endpoint** that any future frontend can call: a Supabase Edge
+Function at `supabase/functions/subscribe/index.ts`.
+
+- `POST https://<project>.supabase.co/functions/v1/subscribe`
+- Body: `{"phone_number": "+16145551234", "name": "…", "companies": [], "categories": []}`
+  (only `phone_number` required; bare 10-digit US numbers are normalized to `+1…`)
+- Responses: `201 subscribed`, `200 already_subscribed` / `resubscribed`
+  (duplicate numbers re-activate instead of erroring), `400` invalid phone.
+- CORS-enabled; runs with the service-role key injected by Supabase — so the
+  `subscribers` table needs **no** anon insert policy, and anon can never read numbers.
+
+Deploy (once the Supabase account exists):
+
+```bash
+supabase functions deploy subscribe --no-verify-jwt   # public endpoint, no auth header needed
+curl -X POST https://<project>.supabase.co/functions/v1/subscribe \
+  -H "Content-Type: application/json" \
+  -d '{"phone_number": "+16145551234", "name": "Test"}'
+```
+
+> If signup abuse becomes a concern later, add a shared-secret header check or
+> switch `--no-verify-jwt` off and require the anon key as a bearer token.
 
 #### File changes
 
 | File | Change |
 |---|---|
-| `scrapers/phone_notifier.py` | new — Supabase fetch + Twilio send (skips if unconfigured) |
+| `scrapers/db.py` | new — Supabase client + helpers (returns `None` if unconfigured) |
+| `scrapers/migrate_to_supabase.py` | new — one-off Stage A backfill from YAML |
+| `scrapers/phone_notifier.py` | new — subscriber fetch + Twilio send (skips if unconfigured) |
+| `supabase/functions/subscribe/index.ts` | new — public signup API endpoint (Edge Function) |
 | `scrapers/common.py` | new — shared `event_key`, `load_yaml`, `is_future`, `format_date` |
-| `scrapers/discord_notifier.py` | import shared helpers from `common.py` |
+| `scrapers/eightfold_scraper.py` | Stage B: also upsert scraped events into Supabase |
+| `scrapers/merge_events.py` | Stage B: approval flips `status` to `approved` in Supabase |
+| `scrapers/discord_notifier.py` | Stage C: read events from Supabase, set `discord_posted_at` |
 | `scrapers/run_all.py` | run phone notifier after Discord notifier |
 | `scrapers/requirements.txt` | add `supabase>=2.0`, `twilio>=9.0` |
 | `scrapers/.env.example` | add `SUPABASE_URL`, `SUPABASE_SERVICE_KEY`, `TWILIO_*` placeholders |
-| `.github/workflows/update-events.yml` | pass the new secrets as env vars |
+| `.github/workflows/update-events.yml` | pass new secrets; Stage D: drop the data-commit step |
 
 #### Security notes
 
 - Use the **service-role** key only in CI secrets / local `.env` — never in a browser or committed file.
 - Phone numbers are PII: keep RLS on, no public SELECT, delete rows on unsubscribe requests.
+- Events are fine to expose read-only via the anon key (they're public info anyway).
 - Include opt-out language in every SMS ("Reply STOP") — required for US SMS compliance,
   and Twilio handles STOP replies automatically.
 
 #### Milestones
 
-- [ ] Add `phone_notifier.py` + `common.py` refactor (safe no-op without credentials)
+- [ ] Add `db.py`, `common.py`, `phone_notifier.py`, `migrate_to_supabase.py` (all safe no-ops without credentials)
+- [ ] Add `supabase/functions/subscribe/index.ts` signup endpoint
 - [ ] Add deps, `.env.example` entries, workflow env wiring
 - [ ] Create Supabase project, run schema SQL *(waiting on Supabase account info)*
+- [ ] Deploy the `subscribe` edge function, test with `curl`
 - [ ] Add `SUPABASE_URL` / `SUPABASE_SERVICE_KEY` (+ Twilio) as GitHub Actions secrets
-- [ ] Insert a test subscriber, run `python scrapers/phone_notifier.py`, confirm SMS
+- [ ] Stage A: run backfill, spot-check rows in the Supabase dashboard
+- [ ] Stage B: dual-write from scraper/merge, confirm parity with YAML for a few days
+- [ ] Stage C: notifiers read from Supabase; insert a test subscriber, confirm SMS
+- [ ] Stage D: retire YAML writes + workflow commit step
 - [ ] Confirm daily CI run texts new events with no duplicates
 
 ---

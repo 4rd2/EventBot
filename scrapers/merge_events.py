@@ -87,19 +87,31 @@ def main():
             continue
 
         if AUTO_APPROVE:
-            approved.append(clean(e))
+            approved.append(e)
             existing_keys.add(key)
         else:
             if prompt_approve(e):
-                approved.append(clean(e))
+                approved.append(e)
                 existing_keys.add(key)
 
-    # Merge + re-sort by date
-    merged = live + approved
+    # Merge + re-sort by date (strip internal fields only for the YAML copy,
+    # so the Supabase dual-write below still sees `source`)
+    merged = live + [clean(e) for e in approved]
     merged.sort(key=lambda e: str(e.get("date", "9999")))
 
     save_yaml(LIVE_PATH, merged)
     save_yaml(PENDING_PATH, [])  # clear pending
+
+    # Stage B dual-write: flip approved events to approved in Supabase too.
+    # No-op until SUPABASE_* credentials are configured; YAML stays authoritative.
+    if approved:
+        try:
+            import db
+            if db.is_configured():
+                n = db.approve_events(approved)
+                print(f"Supabase: approved {n} event(s)")
+        except Exception as e:
+            print(f"[!] Supabase approve failed (YAML unaffected): {e}")
 
     print(f"\nMerge complete.")
     print(f"  {len(approved)} event(s) added to events.yaml")

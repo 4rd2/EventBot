@@ -25,10 +25,17 @@ jobs:
           pip install -r scrapers/requirements.txt
           playwright install chromium --with-deps
 
-      - name: Run scraper and post to Discord
+      - name: Run scraper and post notifications
         run: python scrapers/run_all.py --merge
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          # Supabase + Twilio power phone notifications (PLAN.md §4.2).
+          # Until these secrets are added, those steps skip cleanly.
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+          TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
+          TWILIO_FROM_NUMBER: ${{ secrets.TWILIO_FROM_NUMBER }}
 
       - name: Commit updated event data
         run: |

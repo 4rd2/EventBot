@@ -2,3 +2,5 @@ requests==2.32.3
 pyyaml==6.0.2
 python-dotenv==1.0.1
 playwright>=1.48.0
+supabase>=2.0
+twilio>=9.0

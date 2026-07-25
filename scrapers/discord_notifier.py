@@ -15,6 +15,8 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 from dotenv import load_dotenv
 
+from common import event_key, load_yaml, is_future, format_date
+
 # Ensure UTF-8 output on Windows terminals
 if sys.stdout.encoding.lower() != "utf-8":
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -62,36 +64,9 @@ TAG_EMOJI = {
     "hackathon":     "💻",
 }
 
-def event_key(e: dict) -> str:
-    return f"{e.get('company','')}|{e.get('event','')}|{e.get('date','')}"
-
-def load_yaml(path: Path):
-    if path.exists():
-        with open(path) as f:
-            return yaml.safe_load(f) or {}
-    return {}
-
 def save_sent(sent: list[str]):
     with open(SENT_PATH, "w") as f:
         yaml.dump({"sent": sent}, f, allow_unicode=True)
-
-def is_future(e: dict) -> bool:
-    try:
-        return date.fromisoformat(str(e.get("date", ""))) >= date.today()
-    except (ValueError, TypeError):
-        return True
-
-def format_date(date_str) -> str:
-    try:
-        d = date.fromisoformat(str(date_str))
-        return d.strftime("%A, %B %-d, %Y")
-    except Exception:
-        # %-d not supported on Windows — fallback
-        try:
-            d = date.fromisoformat(str(date_str))
-            return d.strftime("%A, %B %d, %Y").replace(" 0", " ")
-        except Exception:
-            return str(date_str)
 
 def build_embed(event: dict) -> dict:
     company  = event.get("company", "")

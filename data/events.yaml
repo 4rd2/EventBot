@@ -335,6 +335,13 @@
   tags:
   - info-session
 - company: Capital One
+  event: 'Students & Grads Virtual Event: Business Case Workshop - Replay'
+  date: '2026-08-03'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=KPE2mVVW&domain=capitalone.com
+  tags:
+  - workshop
+- company: Capital One
   event: 'Capital One Strategy: Chat with an Associate!'
   date: '2026-08-04'
   location: Online
@@ -368,6 +375,13 @@
   date: '2026-08-10'
   location: Online
   link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=2PB0nyv7&domain=capitalone.com
+  tags:
+  - workshop
+- company: Capital One
+  event: 'Students & Grads Virtual Event: Business Case Workshop - Replay'
+  date: '2026-08-10'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=G7M0Aq1W&domain=capitalone.com
   tags:
   - workshop
 - company: Capital One

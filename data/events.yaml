@@ -371,6 +371,13 @@
   tags:
   - workshop
 - company: Capital One
+  event: Capital One at the North Texas Jobfair
+  date: '2026-08-06'
+  location: Globe Life Park, 734 Stadium Drive Arlington, Texas 76001
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=N7wMDkyP&domain=capitalone.com
+  tags:
+  - info-session
+- company: Capital One
   event: 'Students & Grads Virtual Event: Tech Case Workshop (Replay)'
   date: '2026-08-10'
   location: Online

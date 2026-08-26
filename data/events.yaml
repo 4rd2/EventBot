@@ -484,6 +484,13 @@
   tags:
   - info-session
 - company: Capital One
+  event: Grace Hopper Celebration 2026
+  date: '2026-10-27'
+  location: Anaheim Convention Center , Anaheim, California, USA
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=Y7LdEg27&domain=capitalone.com
+  tags:
+  - info-session
+- company: Capital One
   event: Afrotech Conference 2026
   date: '2026-11-02'
   location: George Brown Convention Center, Houston, Texas

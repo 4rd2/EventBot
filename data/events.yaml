@@ -457,6 +457,20 @@
   tags:
   - workshop
 - company: Capital One
+  event: 'Students & Grads Virtual Event: Tech Case Workshop'
+  date: '2026-09-04'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=LPXa3bbW&domain=capitalone.com
+  tags:
+  - workshop
+- company: Capital One
+  event: 'Students & Grads Virtual Event: Ace That Coding Assessment Workshop'
+  date: '2026-09-08'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=GPnXAGy7&domain=capitalone.com
+  tags:
+  - workshop
+- company: Capital One
   event: Veterans' Legal Career Fair
   date: '2026-09-18'
   location: Washington DC, Washington D.C., DC, USA

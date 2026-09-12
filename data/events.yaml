@@ -528,10 +528,24 @@
   tags:
   - workshop
 - company: Capital One
+  event: Meet Capital One AI & ML Leaders
+  date: '2026-10-08'
+  location: Ascend, 10400 NE 4th Street, Suite 3100, Bellevue, WA 98004
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=Y7LrmOwP&domain=capitalone.com
+  tags:
+  - info-session
+- company: Capital One
   event: Out & Equal Workplace Summit 10/12 - 10/15
   date: '2026-10-12'
   location: Seattle Convention Center – Summit Building, Seattle, Washington, USA
   link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=bzR3gkaP&domain=capitalone.com
+  tags:
+  - info-session
+- company: Capital One
+  event: Product Open House-Innovate & Influence
+  date: '2026-10-15'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=EPYJ0oNW&domain=capitalone.com
   tags:
   - info-session
 - company: Capital One

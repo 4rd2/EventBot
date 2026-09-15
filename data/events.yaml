@@ -492,6 +492,13 @@
   tags:
   - workshop
 - company: Capital One
+  event: VA Chamber Hire Vets Now 9.16.26
+  date: '2026-09-16'
+  location: Fort Belvoir, Fort Belvoir, VA
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=LPXBr287&domain=capitalone.com
+  tags:
+  - info-session
+- company: Capital One
   event: Veterans' Legal Career Fair
   date: '2026-09-18'
   location: Washington DC, Washington D.C., DC, USA
@@ -506,6 +513,13 @@
   link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=Z7l5XZBz&domain=capitalone.com
   tags:
   - workshop
+- company: Capital One
+  event: Frontier Careers Fair at UMD
+  date: '2026-09-22'
+  location: The Hotel at the University of Maryland , University of Maryland,
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=GzG41nQP&domain=capitalone.com
+  tags:
+  - info-session
 - company: Capital One
   event: 'Students & Grads Virtual Event: Tech Case Workshop (Replay)'
   date: '2026-09-25'

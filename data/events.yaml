@@ -535,6 +535,13 @@
   tags:
   - info-session
 - company: Capital One
+  event: 'One Pipeline: Engineering the Future of CI/CD at Capital One'
+  date: '2026-09-25'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=Z7l5RD5z&domain=capitalone.com
+  tags:
+  - info-session
+- company: Capital One
   event: 'Students & Grads Virtual Event: Product Case Workshop'
   date: '2026-09-28'
   location: Online

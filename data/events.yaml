@@ -563,6 +563,20 @@
   tags:
   - workshop
 - company: Capital One
+  event: 'Students & Grads Virtual Event: Ace That Coding Assessment Workshop'
+  date: '2026-10-01'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=GPnp9wm7&domain=capitalone.com
+  tags:
+  - workshop
+- company: Capital One
+  event: 'Students & Grads Virtual Event: Product Case Workshop'
+  date: '2026-10-05'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=N7wA1q8P&domain=capitalone.com
+  tags:
+  - workshop
+- company: Capital One
   event: Meet Capital One AI & ML Leaders
   date: '2026-10-08'
   location: Ascend, 10400 NE 4th Street, Suite 3100, Bellevue, WA 98004

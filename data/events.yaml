@@ -577,6 +577,13 @@
   tags:
   - workshop
 - company: Capital One
+  event: Consumer & Developer Experience Product & BA Open House 10.29.26
+  date: '2026-10-07'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=2PBrpNyP&domain=capitalone.com
+  tags:
+  - info-session
+- company: Capital One
   event: Meet Capital One AI & ML Leaders
   date: '2026-10-08'
   location: Ascend, 10400 NE 4th Street, Suite 3100, Bellevue, WA 98004
@@ -604,6 +611,20 @@
   link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=EPYJ0oNW&domain=capitalone.com
   tags:
   - info-session
+- company: Capital One
+  event: 'Students & Grads Virtual Event: Tech Case Workshop (Replay)'
+  date: '2026-10-15'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=G7M4GZnW&domain=capitalone.com
+  tags:
+  - workshop
+- company: Capital One
+  event: 'Students & Grads Virtual Event: Business Case Workshop (Replay)'
+  date: '2026-10-16'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=2zDaGpOP&domain=capitalone.com
+  tags:
+  - workshop
 - company: Capital One
   event: All Things Open Conference 2026
   date: '2026-10-18'

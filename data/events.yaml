@@ -710,6 +710,13 @@
   tags:
   - info-session
 - company: Capital One
+  event: 'Students & Grads Virtual Event: Business Case Workshop - Replay'
+  date: '2026-11-09'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=mW6GEXL7&domain=capitalone.com
+  tags:
+  - workshop
+- company: Capital One
   event: AWS Conference 2026
   date: '2026-11-30'
   location: The Venetian, Las Vegas, NV, USA
@@ -723,6 +730,13 @@
   link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=jzKJVl07&domain=capitalone.com
   tags:
   - info-session
+- company: Capital One
+  event: 'Students & Grads Virtual Event: Business Case Workshop - Replay'
+  date: '2026-12-07'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=Y7Lr4xYP&domain=capitalone.com
+  tags:
+  - workshop
 - company: Capital One
   event: 'Students & Grads Virtual Event: Learn About Capital One''s 2027 Product
     Program & Recruiter Q&A'

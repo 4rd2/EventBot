@@ -682,6 +682,20 @@
   tags:
   - workshop
 - company: Capital One
+  event: 'Students & Grads Virtual Event: Product Case Workshop'
+  date: '2026-10-23'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=yP2VnXQP&domain=capitalone.com
+  tags:
+  - workshop
+- company: Capital One
+  event: 'Students & Grads Virtual Event: Product Case Workshop'
+  date: '2026-10-26'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=LPXBgVR7&domain=capitalone.com
+  tags:
+  - workshop
+- company: Capital One
   event: Grace Hopper Conference2026
   date: '2026-10-27'
   location: Anaheim Convention Center , Anahelm, CA
@@ -716,6 +730,13 @@
   link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=LPXDYXbP&domain=capitalone.com
   tags:
   - info-session
+- company: Capital One
+  event: 'Students & Grads Virtual Event: Product Case Workshop'
+  date: '2026-11-02'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=G7NL48DP&domain=capitalone.com
+  tags:
+  - workshop
 - company: Capital One
   event: Open Source in Finance Forum (OSFF) 2026
   date: '2026-11-04'

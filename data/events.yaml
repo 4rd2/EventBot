@@ -787,6 +787,13 @@
   tags:
   - info-session
 - company: Capital One
+  event: 'DUK: Ask Me Anything: Capital One Tech Interviews -12/1'
+  date: '2026-12-01'
+  location: Online
+  link: https://capitalone.eightfold.ai/events/candidate?plannedEventId=LPXLVM0P&domain=capitalone.com
+  tags:
+  - info-session
+- company: Capital One
   event: NeurIPS Conference 2026
   date: '2026-12-06'
   location: Conference Center, Sydney NSW, Australia
